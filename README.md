@@ -65,8 +65,8 @@ Function to make a request using exec process.
 
 ## Variables
 
-##### smartResponseData
-You can use this var to print a result of any request that you loaded.
+##### $smartResponseData
+This variable is been declared every time you make a request. To get the result of last request you need use it.
 
 ## Tests
 This library has been tested on CentOS 5 and CentOS 6.
