@@ -68,7 +68,7 @@ function smartConnect() {
 
 	if [ $VB == 1 ]; then echo "Connecting S.M.A.R.T ..."; fi
 	smartConn="$(curl -s $API_URL/$NODE/$1 --user $API_USER:$API_KEY)";
-
+	echo curl -s $API_URL/$NODE/$1 --user $API_USER:$API_KEY;
 	echo $smartConn > ".temp.auth.json";
 
 	smartAppName=$1;
@@ -258,7 +258,7 @@ function _saSendExec() {
 	if [ $VB == 1 ]; then echo "- Sending data ... (#:$3)"; fi
 
 	NODE="exec";
-
+	echo $API_URL/$NODE/$1/$5/$2/$3 --user $API_USER:$API_KEY --cookie "$sysCookie" --data "$4";
 	smartRequest="$(curl -s $API_URL/$NODE/$1/$5/$2/$3 --user $API_USER:$API_KEY --cookie "$sysCookie" --data "$4")";
 
 	typeReturn=$1;

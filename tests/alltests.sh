@@ -2,19 +2,11 @@
 # Load smart api library
 # Local path is ../src/SMARTAPI.sh
 
-# globalVars
 
-smartVerbose="1";
-smartApiUrl="http://www.smartapps.com.br/api/fp";
-smartApiUser="PUT_YOUR_KEY_USER_HERE";
-smartApiKey="PUT_YOUR_API_KEY_HERE";
+# Load globalVars and Load SMARTAPI
+source ../smart.cfg
 
 . ../src/SMARTAPI.sh
-
-# vars to test
-
-wSchema="PUT_YOUR_SCHEMA_HERE";
-wApp="PUT_APP_NAME_HERE";
 
 #
 # first step: setup a app to connect. Before connect you can change app
@@ -52,19 +44,25 @@ echo $smartResponseData;
 #
 # function for send basic string data with exec.
 #
-smartSendDataExec 'csv' $wSchema 'variaveis_valores/insert' 'variavel=1&valor=12';
+smartSendDataExec 'json' $wSchema 'variaveis_valores/insert' 'variavel=1&valor=9';
 echo $smartResponseData;
 
 #
 # function for send multidimensional string data with exec.
 #
-smartSendDataExec 'json' $wSchema 'variaveis_valores/insert' 'variavel[]=1&valor[]=12&variavel[]=13&valor[]=22&tmd=1';
+smartSendDataExec 'json' $wSchema 'variaveis_valores/insert' 'variavel[]=1&valor[]=12&variavel[]=1&valor[]=22&tmd=1';
 echo $smartResponseData;
 
 #
 # function for execute a method from app.
 #
 smartExecMethod 'json' $wSchema 'variaveis_valores/insert';
+echo $smartResponseData;
+
+#
+# function for execute a method from app.
+#
+smartSendDataExec 'json' $wSchema 'variaveis_valores/insert' 'variavel=1&valor=23';
 echo $smartResponseData;
 
 #
